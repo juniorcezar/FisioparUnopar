@@ -1,0 +1,54 @@
+CREATE TABLE etnia(
+ID int(11) NOT NULL PRIMARY KEY,
+TIPO varchar(55));
+
+INSERT INTO etnia (ID, TIPO) VALUES
+(1, 'Branca'),
+(2, 'Preta'),
+(3, 'Parda'),
+(4, 'Amarela'),
+(5, 'Ind�gena');
+
+CREATE TABLE sexo (
+ID int(11) NOT NULL PRIMARY KEY,
+TIPO varchar(20));
+
+INSERT INTO sexo
+(ID, TIPO) VALUES
+(1, 'Feminino'),
+(2, 'Masculino');
+
+create table endereco(
+id int (11) not null AUTO_INCREMENT primary key,
+CEP varchar (20),
+Estado int,
+Cidade int,
+Logradouro varchar (55),
+Numero int,
+Bairro varchar (55),
+Complemento varchar (100));
+
+CREATE TABLE paciente (
+id int not null auto_increment primary key,
+nome varchar(55),
+data_nasc date,
+sexo int(11),
+etnia int(11),
+cpf varchar(20),
+rg varchar(20),
+tel_prim int(20),
+tel_sec int(20),
+endereco int(11),
+email varchar (100),
+est_civ varchar (50),
+cns varchar (55),
+valid_cart date,
+nome_mae varchar (50),
+nome_pai varchar (50),
+convenio varchar (55),
+dat_hr datetime,
+observacoes varchar (50000),
+FOREIGN KEY (endereco) REFERENCES endereco(ID),
+FOREIGN KEY (sexo)REFERENCES sexo(ID),
+FOREIGN KEY (etnia) REFERENCES etnia(ID)
+);

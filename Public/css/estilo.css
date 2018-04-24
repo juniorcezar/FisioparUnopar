@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* #### Corpo do Documento #### */
+body {
+    background-color: #ecf0f1;
+    font-size: 16px;
+}
+
+/* #### Ínicio da formatação da Sidebar #### */
+
+.sidebar {
+    background-color: #303641;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+.sidebar-desc {
+    border-bottom: 1px inset #3E444E;
+    width: 100%;
+}
+
+.sidebar-desc h1, .titulo-side {
+    text-align: center;
+    margin-top: 10px;
+    color: #757575;
+}
+.sidebar-desc img {
+    border-radius: 100%;
+}
+.sidebar-menu ul {
+    list-style-type: none;
+    padding-top: 5px;
+}
+.sidebar-menu li {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px inset #3E444E;
+    color: dimgrey;
+}
+.sidebar-menu li .arrow:before {
+    font-family: FontAwesome;
+    content: "\f077"; /* \f078 */
+    float: right;
+    padding-right: 15px;
+    position: relative;
+    top: 5px;
+}
+.sidebar-menu li .collapsed .arrow:before {
+    font-family: FontAwesome;
+    content: "\f078"; /* \f078 */
+    float: right;
+    padding-right: 15px;
+}
+
+.sidebar-menu li a{
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #757575;
+    font-size: 18px;
+    line-height: 10px;
+}
+.sidebar-sub-menu a{
+    color: #ccc !important;
+    font-size: 16px;
+}
+.sidebar-sub-menu li {
+    border-bottom: none;
+}
+.sidebar-sub-menu li:hover {
+}
+/* #### Ínicio da formatação do Conteúdo #### */
+.conteudo {
+    float: right;
+    
+}
+.conteudo-menu {
+    width: 100%;
+    height: auto;
+    background-color: #2980b9;
+    color: white;
+    padding: 10px;
+}
+form {
+    padding-top: 10px;
+    
+}
+.conteudo-menu-titulo {
+    border-bottom: 1px inset #ccc;
+}
+/* #### Gambiarra #### */
+.col-right {
+    padding-right: 0;
+}
+.col-left {
+    padding-left: 0;
+}
+.estadotela {
+    padding-top: 20px;
+}
+.titulo {
+    margin-left: 15px;
+    vertical-align: middle;
+}
+.menu-header ul {
+    list-style-type: none;
+    position: absolute;
+    right: 5px;
+}
+.menu-header li {
+    display: inline-block;
+}
+.menu-header li img {
+    border-radius: 100%;
+}
+.menu-header li a {
+    padding-left: 10px;
+    padding-right: 40px;
+    color: white;
+    text-decoration: none;
+}
+.conteudo-menu i{
+    margin-left: -10px;
+    font-size: 22px;
+}
+.conteudo-menu li i:last-of-type {
+    font-size: 16px;
+}
+.sidebar-sub-menu i {
+    color: white;
+    float: right;
+    padding-right: 15px;
+}
+hr {
+    border: 0.5px inset #dddddd;
+    padding: 0;
+}
+.btn {
+    margin-right: 10px;
+}
