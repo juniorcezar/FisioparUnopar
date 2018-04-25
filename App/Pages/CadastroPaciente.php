@@ -277,9 +277,13 @@ if (isset($cep) && isset($estado) && isset($cidade) && isset($bairro)
   echo 'Campos do endereço sem preencher!';
 }
 
+// Formatação das Datas
+$dataNasc = filter_input(INPUT_POST, 'dataNasc');
+$valCarteira = filter_input(INPUT_POST, 'validCart');
+$dataHora = filter_input(INPUT_POST, 'dataHora');
+
 // Dados do Paciente
 $nome = filter_input(INPUT_POST, 'nome');
-$dataNasc = filter_input(INPUT_POST, 'dataNasc');
 $sexo = filter_input(INPUT_POST, 'sexo');
 $etnia = filter_input(INPUT_POST, 'etnia');
 $cpf = filter_input(INPUT_POST, 'cpf');
@@ -289,11 +293,9 @@ $telSec = filter_input(INPUT_POST, 'telSec');
 $email = filter_input(INPUT_POST, 'email');
 $estadoCivil = filter_input(INPUT_POST, 'estadoCivil');
 $cns = filter_input(INPUT_POST, 'cns');
-$valCarteira = filter_input(INPUT_POST, 'validCart');
 $nomeMae = filter_input(INPUT_POST, 'nomeMae');
 $nomePai = filter_input(INPUT_POST, 'nomePai');
 $convenio = filter_input(INPUT_POST, 'convenio');
-$dataHora = filter_input(INPUT_POST, 'dataHora');
 $observacoes = filter_input(INPUT_POST, 'observacoes');
 $endereco = '1';
 
@@ -328,13 +330,14 @@ if (isset($nome) && isset($dataNasc) && isset($sexo) && isset($etnia)
       ':dat_hr' => $dataHora,
       ':obs' => $observacoes
     ];
-var_dump($pacienteBind);
+
     if (Crud::insert($sql, $pacienteBind)) {
       echo 'Cadastro de Paciente realizado com sucesso';
     } else {
-      'Cadastro de Paciente não realizado';
+      echo 'Cadastro de Paciente não realizado';
     }
   } else {
     echo 'Campos do Paciente sem preencher';
   }
+  var_dump($_POST);
 ?>
