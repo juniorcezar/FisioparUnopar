@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <link rel="icon" href="Public/img/icon3.png" sizes="32x32" type="image/png">
     <link rel="stylesheet" type="text/css" href="Public/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Public/css/font-awesome.css">
     <link rel="stylesheet" href="Public/css/estilo.css" />
     <link rel="stylesheet" href="Public/css/sweetalert.css">
     <script src="Public/js/jquery.min.js" type="text/javascript"></script>
@@ -30,7 +30,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 sidebar col-right col-left"><!-- #### Ínicio da Sidebar #### -->
+            <div class="col-md-2 sidebar col-right col-left"><!-- #### Inicio da Sidebar #### -->
                 <div class="sidebar-desc">
                     <h1><img src="Public/img/profile.png" alt="" width="45px" height="45px"></h1>
                     <p class="titulo-side">Isadora Pinto</p>
@@ -95,11 +95,11 @@
                 <div class="col-md-10 conteudo">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
-                            <!-- #### Os Formulários serão chamados aqui #### -->
+                            <!-- #### Os FormulÃ¡rios serÃ£o chamados aqui #### -->
                             <?php
                                 require_once sprintf('App/Pages/%s.php', ucfirst($page));
-                            ?>    
-                            <!-- #### Formulários #### -->
+                            ?>
+                            <!-- #### FormulÃ¡rios #### -->
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ class Database
 	private function __construct()
 	{
 		$host = 'localhost';
-		$base = 'fisioterapia';
+		$base = 'fisiopar';
 		$user = 'root';
 		$pass = '';
 		$driver = 'mysql';

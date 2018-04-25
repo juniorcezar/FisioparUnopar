@@ -26,14 +26,14 @@ use Unopar\Core\Crud;
 		} else{
 			echo "Não cadastrado";
 		}
-	}    
+	}
 ?>
 
 <h2>Cadastro </h2>
 <hr>
 <form class="form-fluid">
 
-	 
+
 	<div class="row">
 			<div class="col-md-9 col-xs-2">
 				<div class="form-group">
@@ -41,14 +41,14 @@ use Unopar\Core\Crud;
 					<input type="text" class="form-control" name="paciente" placeholder="Nome" required="">
 				</div>
 			</div>
-		  
+
 		  <div class="col-md-3 col-xs-3">
             <div class="form-group">
                     <label for="">Cod. do Cliente:</label>
                     <input type="text" class="form-control" name="cod_paciente" placeholder="Telefone" required="">
             </div>
         </div>
-		
+
 		<div class="col-md-3 col-xs-2">
             <div class="form-group">
                 <label for="">Medico:</label>
@@ -63,7 +63,7 @@ use Unopar\Core\Crud;
 				<label for="">Convenio</label>
 					<select class="form-control" width="100%" required="" name="convenio">
 					<option>S.U.S </option>
-					
+
 
 					</select>
 			</div>
@@ -107,12 +107,12 @@ use Unopar\Core\Crud;
  			</div>
         </div>
 
-       
+
 	</div>
 
     <div class="row"><!-- Quarta ROW-->
 
-         
+
 <div class="col-md-6 col-xs-2">
 			<div class="form-group">
 				<label for="">Tipo da Consulta</label>
@@ -123,9 +123,9 @@ use Unopar\Core\Crud;
 						<option>Ginecologia</option>
 						<option>Pediatria</option>
 						<option>Neurologia</option>
-						
-						
- 
+
+
+
 					</select>
 			</div>
 		</div>
@@ -135,11 +135,11 @@ use Unopar\Core\Crud;
 				<label for="">Situacao</label>
 					<select class="form-control" width="100%" required="">
 						<option>Marcado</option>
- 
+
 					</select>
 			</div>
-		</div> 
-		
+		</div>
+
 			<div class="col-md-3 col-xs-3">
 			<div class="form-group">
 				<label for="">UBS</label>
@@ -149,11 +149,11 @@ use Unopar\Core\Crud;
 					<option>3</option>
 					<option>4</option>
 					<option>5</option>
-					
+
 
 					</select>
 			</div>
-			
+
 		</div>
 		</div>
 
@@ -165,14 +165,14 @@ use Unopar\Core\Crud;
                 </div>
 			</div>
 
-			 
+
   	<div class="col-md-12 col-xs-3">
                 <div class="form-group">
                     <p> Tipo de Encaminhamento<br>
     				<span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="120" rows="5" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"></textarea></span> </p>
                 </div>
 			</div>
-   
+
 			</ul>
 
 	<div class="col-md-6 col-xs-3">
