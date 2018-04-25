@@ -243,7 +243,7 @@
 
 <?php
 use Unopar\Core\Crud;
-/*
+
 // Dados do endereço
 $cep = filter_input(INPUT_POST, 'cep');
 $estado = filter_input(INPUT_POST, 'estado');
@@ -276,7 +276,7 @@ if (isset($cep) && isset($estado) && isset($cidade) && isset($bairro)
 } else {
   echo 'Campos do endereço sem preencher!';
 }
-*/
+
 // Dados do Paciente
 $nome = filter_input(INPUT_POST, 'nome');
 $dataNasc = filter_input(INPUT_POST, 'dataNasc');
