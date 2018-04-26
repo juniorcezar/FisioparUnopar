@@ -29,13 +29,15 @@ class Crud extends Database
 		}
 	}
 
-	public static function select($query, $params = []):array
+	public static function select($query, $params):array
 	{
 		$stmt = Crud::conexao()->prepare($query);
-		setParams($stmt, $params);
+		Crud::setParams($stmt, $params);
 
 		try {
-			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			$stmt->execute();
+			$result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			return $result;
 
 		} catch (Exception $e) {
 			echo $e->getMessage();
