@@ -18,8 +18,8 @@
     <!--Sexo -->
     <div class="col-md-3">
       <label for="">Sexo: </label><br>
-      <label class="radio-inline"><input type="radio" name="sexo" value="2">Masculino</label>
-      <label class="radio-inline "><input type="radio" name="sexo" value="1">Feminino</label>
+      <label class="radio-inline"><input type="radio" name="sexo" value="masculino">Masculino</label>
+      <label class="radio-inline "><input type="radio" name="sexo" value="feminino">Feminino</label>
     </div>
   </div>
   <!--Fim da Primeira Linha -->
@@ -31,11 +31,11 @@
       <label for="exampleFormControlSelect1">Etnia:</label>
       <select class="form-control" id="exampleFormControlSelect1" name="etnia">
         <option>Selecione</option>
-        <option value="1">Branco</option>
-        <option value="2">Pardo</option>
-        <option value="3">Negro</option>
-        <option value="4">Amarelo</option>
-        <option value="5">Indigena</option>
+        <option value="branco">Branco</option>
+        <option value="pardo">Pardo</option>
+        <option value="negro">Negro</option>
+        <option value="amarelo">Amarelo</option>
+        <option value="indigena">Indigena</option>
       </select>
     </div>
 
@@ -54,13 +54,13 @@
     <!--Telefone 1 -->
     <div class="col-md-3">
       <label for="">Telefone 1: </label>
-      <input type="text" class="form-control" placeholder="Telefone" name="telPrim">
+      <input type="text" class="form-control" placeholder="Telefone" name="telefone1">
     </div>
 
     <!--Telefone 2 -->
     <div class="col-md-3">
       <label for="">Telefone 2: </label>
-      <input type="text" class="form-control" placeholder="Celular" name="telSec">
+      <input type="text" class="form-control" placeholder="Celular" name="telefone2">
     </div>
   </div>
   <!--Fim da Segunda Linha -->
@@ -70,25 +70,25 @@
     <!--CEP -->
     <div class="col-md-2">
       <label for="">CEP: </label>
-      <input type="text" class="form-control" placeholder="CEP" name="cep">
+      <input type="text" class="form-control" placeholder="CEP" name="cep" id="cep">
     </div>
 
     <!--Logradouro -->
     <div class="col-md-5">
       <label for="">Logradouro:</label>
-      <input type="text" class="form-control" placeholder="Rua" name="rua">
+      <input type="text" class="form-control" placeholder="Rua" name="logradouro" id="logradouro">
     </div>
 
     <!--Número da Casa -->
     <div class="col-md-2">
       <label for="">Nº:</label>
-      <input type="text" class="form-control" placeholder="Número" name="numCasa">
+      <input type="number" class="form-control" placeholder="Número" name="numCasa">
     </div>
 
     <!--Bairro -->
     <div class="col-md-3">
       <label for="">Bairro:</label>
-      <input type="text" class="form-control" placeholder="Bairro" name="bairro">
+      <input type="text" class="form-control" placeholder="Bairro" name="bairro" id="bairro">
     </div>
   </div>
   <!--Fim da Terceira Linha -->
@@ -97,17 +97,14 @@
   <div class="row form-group">
     <!--Estado -->
     <div class="col-md-2">
-      <label for="">Estado:</label>
-      <select id="inputState" class="form-control" name="estado">
-        <option selected>Selecione</option>
-        <option value="parana">Paraná</option>
-      </select>
+      <label for="">Estado: </label>
+      <input type="text" class="form-control" placeholder="Estado" name="estado" id="estado">
     </div>
 
     <!--Cidade -->
     <div class="col-md-3">
       <label for="">Cidade:</label>
-      <input type="text" class="form-control" placeholder="Cidade" name="cidade">
+      <input type="text" class="form-control" placeholder="Cidade" name="cidade" id="cidade">
     </div>
 
     <!--Complemento -->
@@ -142,7 +139,7 @@
     <!--Validade da Carteira -->
     <div class="col-md-3 col-md-offset-1">
       <label for="">Valid. Carteira: </label>
-      <input type="date" class="form-control" placeholder="Valid. Carteira" name="validCart">
+      <input type="date" class="form-control" placeholder="Valid. Carteira" name="valCarteira">
     </div>
 
     <!--Convênio -->
@@ -160,7 +157,7 @@
     <!--Nome do Responsavel -->
     <div class="col-md-4">
       <label for="">Nome do Responsavel: </label>
-      <input type="text" class="form-control" placeholder="Nome da Mãe" name="nomePai">
+      <input type="text" class="form-control" placeholder="Nome do Responsável" name="nomeResponsavel">
     </div>
 
     <!--Nome da Mãe -->
@@ -197,44 +194,65 @@
   </div>
   <!--Fim da linha de botoes-->
 </form>
+<script type="text/javascript">
+  jQuery(function($){
+   $("#cep").change(function(){
+    var cep_code = $(this).val();
+    if( cep_code.length <= 0 ) return;
+    $.get("http://apps.widenet.com.br/busca-cep/api/cep.json", { code: cep_code },
+      function(result){
+        if( result.status!=1 ){
+          alert(result.message || "Houve um erro desconhecido");
+          return;
+        }
+        $("input#cep").val( result.code );
+        $("input#estado").val( result.state );
+        $("input#cidade").val( result.city );
+        $("input#bairro").val( result.district );
+        $("input#logradouro").val( result.address );
+      });
+  });
+});
+</script>
 
 <?php
 use Unopar\Core\Crud;
 
 // Dados do endereço
-$cep = filter_input(INPUT_POST, 'cep');
+$id = '6';
+$cep = str_replace('-', '', filter_input(INPUT_POST, 'cep'));
+$logradouro = str_replace('-', ' ', filter_input(INPUT_POST, 'logradouro'));
+$numCasa = filter_input(INPUT_POST, 'numCasa');
+$bairro = filter_input(INPUT_POST, 'bairro');
 $estado = filter_input(INPUT_POST, 'estado');
 $cidade = filter_input(INPUT_POST, 'cidade');
-$bairro = filter_input(INPUT_POST, 'bairro');
-$rua = filter_input(INPUT_POST, 'rua');
-$numCasa = filter_input(INPUT_POST, 'numCasa');
 $complemento = filter_input(INPUT_POST, 'complemento');
 
-if (isset($cep) && isset($estado) && isset($cidade) && isset($bairro)
-  && isset($rua) && isset($numCasa) && isset($complemento)) {
+if (isset($id) && isset($cep) && isset($logradouro) && isset($numCasa) && isset($bairro)
+  && isset($estado) && isset($cidade)) {
 
-    $sqlEndereco = "INSERT INTO endereco(CEP, Estado, Cidade, Logradouro, Numero, Bairro, Complemento)
-    VALUES(:cep, :estado, :cidade, :logradouro, :numero, :bairro, :complemento)";
+    $sqlEndereco = "INSERT INTO endereco VALUES
+    (:id, :cep, :logradouro, :numCasa, :bairro, :estado, :cidade, :complemento)";
 
     $enderecoBind = [
+      ':id' => $id,
       ':cep' => $cep,
+      ':logradouro' => $logradouro,
+      ':numCasa' => $numCasa,
+      ':bairro' => $bairro,
       ':estado' => $estado,
       ':cidade' => $cidade,
-      ':logradouro' => $rua,
-      ':numero' => $numCasa,
-      ':bairro' => $bairro,
       ':complemento' => $complemento
     ];
 
-    if (Crud::insert($sqlEndereco, $enderecoBind)) {
-      echo 'Cadastro de Endereço efetuado com sucesso';
-    } else {
-      echo 'Erro ao Cadastrar Endereco';
+    if (! Crud::insert($sqlEndereco, $enderecoBind)) {
+      echo '<script>alert("Erro ao cadastrar endereço!")</script>';
     }
 } else {
   echo 'Campos do endereço sem preencher!';
 }
 
+/*
 // Formatação das Datas
 $dataNasc = filter_input(INPUT_POST, 'dataNasc');
 $valCarteira = filter_input(INPUT_POST, 'validCart');
@@ -297,5 +315,5 @@ if (isset($nome) && isset($dataNasc) && isset($sexo) && isset($etnia)
   } else {
     echo 'Campos do Paciente sem preencher';
   }
-  var_dump($_POST);
+  var_dump($_POST);*/
 ?>
