@@ -4,15 +4,9 @@
   <!--Primeira Linha -->
   <div class="row form-group">
     <!--Nome -->
-    <div class="col-md-3">
+    <div class="col-md-6">
       <label for="">Nome: </label>
       <input type="text" class="form-control" placeholder="Nome" name="nome">
-    </div>
-
-    <!--Sobrenome -->
-    <div class="col-md-3">
-      <label for="">Sobrenome: </label>
-      <input type="text" class="form-control" placeholder="Sobrenome" readonly="true">
     </div>
 
     <!--Data de Nascimento -->
@@ -80,7 +74,7 @@
     </div>
 
     <!--Logradouro -->
-    <div class="col-md-3">
+    <div class="col-md-5">
       <label for="">Logradouro:</label>
       <input type="text" class="form-control" placeholder="Rua" name="rua">
     </div>
@@ -92,15 +86,9 @@
     </div>
 
     <!--Bairro -->
-    <div class="col-md-2">
+    <div class="col-md-3">
       <label for="">Bairro:</label>
       <input type="text" class="form-control" placeholder="Bairro" name="bairro">
-    </div>
-
-    <!--Cidade -->
-    <div class="col-md-3">
-      <label for="">Cidade:</label>
-      <input type="text" class="form-control" placeholder="Cidade" name="cidade">
     </div>
   </div>
   <!--Fim da Terceira Linha -->
@@ -116,17 +104,22 @@
       </select>
     </div>
 
-    <!--Rua -->
+    <!--Cidade -->
     <div class="col-md-3">
-      <label for="">Rua:</label>
-      <input type="text" class="form-control" placeholder="Rua" readonly="true">
+      <label for="">Cidade:</label>
+      <input type="text" class="form-control" placeholder="Cidade" name="cidade">
     </div>
 
     <!--Complemento -->
-    <div class="col-md-3">
+    <div class="col-md-7">
       <label for="">Complemento:</label>
       <input type="text" class="form-control" placeholder="Complemento" name="complemento">
     </div>
+  </div>
+  <!--Fim da Quarta Linha -->
+
+  <!--Quinta Linha -->
+  <div class="row form-group">
 
     <!--Estado Civil -->
     <div class="col-md-2">
@@ -141,65 +134,39 @@
     </div>
 
     <!--Cartão SUS -->
-    <div class="col-md-2">
+    <div class="col-md-3">
       <label for="">Cartão(Sus): </label>
       <input type="text" class="form-control" placeholder="CNS" name="cns">
     </div>
-  </div>
-  <!--Fim da Quarta Linha -->
-
-  <!--Quinta Linha -->
-  <div class="row form-group">
-    <!--Convênio -->
-    <div class="col-md-3">
-      <label for="">Convênio:</label>
-      <select id="inputState" class="form-control" name="convenio">
-        <option selected>Selecione</option>
-        <option value="unimed">Unimed</option>
-        <option>...</option>
-        <option>...</option>
-        <option>...</option>
-      </select>
-    </div>
-
-    <!--Plano -->
-    <div class="col-md-3">
-      <label for="">Plano:</label>
-      <select id="inputState" class="form-control" name="plano" readonly="true">
-        <option selected>Plano</option>
-        <option value="punheta">Punheta</option>
-        <option>...</option>
-        <option>...</option>
-        <option>...</option>
-      </select>
-    </div>
-
-    <!--Registro no Convênio -->
-    <div class="col-md-3">
-      <label for="">Registro no Convênio: </label>
-      <input type="text" class="form-control" placeholder="Registro no Convênio" readonly="true">
-    </div>
 
     <!--Validade da Carteira -->
-    <div class="col-md-3">
+    <div class="col-md-3 col-md-offset-1">
       <label for="">Valid. Carteira: </label>
       <input type="date" class="form-control" placeholder="Valid. Carteira" name="validCart">
+    </div>
+
+    <!--Convênio -->
+    <div class="col-md-2 col-md-offset-1">
+      <label for="">Convênio:</label>
+      <select id="inputState" class="form-control" name="convenio">
+        <option selected value="sus">SUS</option>
+      </select>
     </div>
   </div>
   <!--Fim da Quinta Linha -->
 
   <!--Sexta Linha -->
   <div class="row form-group">
+    <!--Nome do Responsavel -->
+    <div class="col-md-4">
+      <label for="">Nome do Responsavel: </label>
+      <input type="text" class="form-control" placeholder="Nome da Mãe" name="nomePai">
+    </div>
+
     <!--Nome da Mãe -->
     <div class="col-md-4">
       <label for="">Nome da Mãe: </label>
       <input type="text" class="form-control" placeholder="Nome da Mãe" name="nomeMae">
-    </div>
-
-    <!--Nome do Pai  -->
-    <div class="col-md-4">
-      <label for="">Nome do Pai: </label>
-      <input type="text" class="form-control" placeholder="Nome da Mãe" name="nomePai">
     </div>
 
     <!--E-mail -->
@@ -211,26 +178,16 @@
   <!--Fim da Sexta Linha -->
 
   <!--Sétima Linha -->
-  <div class="row form-group">
-    <!--Data/Hora -->
-    <div class="col-md-3">
-      <label for="">Data/Hora: </label>
-      <input type="date" class="form-control" placeholder="Data/Hora" name="dataHora">
+    <div class="row form-group">
+      <!--Observações -->
+      <div class="col-md-12">
+        <label for="comment">Observações:</label>
+        <textarea class="form-control" rows="5" id="comment" name="observacoes"></textarea>
+      </div>
     </div>
-  </div>
   <!--Fim da Sétima Linha -->
 
-  <!--Oitava Linha -->
-  <div class="row form-group">
-    <!--Observações -->
-    <div class="col-md-12">
-      <label for="comment">Observações:</label>
-      <textarea class="form-control" rows="5" id="comment" name="observacoes"></textarea>
-    </div>
-  </div>
-  <!--Fim da Oitava Linha -->
-
-  <!--Nona Linha -->
+  <!--Linha de botoes-->
   <div class="row form-group">
     <!--Botões para Salvar e para Limpar -->
     <div class="col-md-3">
@@ -238,7 +195,7 @@
       <input type="reset" class="btn btn-warning" value="Limpar">
     </div>
   </div>
-  <!--Fim da Nona Linha -->
+  <!--Fim da linha de botoes-->
 </form>
 
 <?php
@@ -258,6 +215,7 @@ if (isset($cep) && isset($estado) && isset($cidade) && isset($bairro)
 
     $sqlEndereco = "INSERT INTO endereco(CEP, Estado, Cidade, Logradouro, Numero, Bairro, Complemento)
     VALUES(:cep, :estado, :cidade, :logradouro, :numero, :bairro, :complemento)";
+
     $enderecoBind = [
       ':cep' => $cep,
       ':estado' => $estado,

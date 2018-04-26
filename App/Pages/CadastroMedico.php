@@ -12,11 +12,11 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
     $areaat = $_POST['areaat'];
     $email = $_POST['email'];
     $cep = $_POST['cep'];
-    $numero = $_POST['numero'];    
+    $numero = $_POST['numero'];
     $rua = $_POST['rua'];
     $cidade = $_POST['cidade'];
-    $tel = $_POST['tel'];  
-    
+    $tel = $_POST['tel'];
+
     $resultado = Crud::consultar("SELECT * FROM medico WHERE medico.cpf_med = '$cpf' AND medico.crm_med = '$crm'");
     if(empty($resultado)){
        $gravar = Crud::salvar("INSERT INTO medico (nome_med ,cpf_med, crm_med) VALUES ('$nome', '$cpf', '$crm')");
@@ -27,7 +27,7 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
 }
 
 
- 
+
 
 
 
@@ -41,7 +41,7 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
     vcpf = elemento.value;
     vcpf = vcpf.replace(/[^\d]+/g, '');
     if (vcpf == '') return elemento.style.backgroundColor = "#FF4500";
-  // Elimina CPFs invalidos conhecidos    
+  // Elimina CPFs invalidos conhecidos
   if (vcpf.length != 11 ||
     vcpf == "00000000000" ||
     vcpf == "11111111111" ||
@@ -54,7 +54,7 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
     vcpf == "88888888888" ||
     vcpf == "99999999999")
     return elemento.style.backgroundColor = "#FF4500";
-  // Valida 1o digito 
+  // Valida 1o digito
   add = 0;
   for (i = 0; i < 9; i++)
     add += parseInt(vcpf.charAt(i)) * (10 - i);
@@ -63,7 +63,7 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
     rev = 0;
   if (rev != parseInt(vcpf.charAt(9)))
     return elemento.style.backgroundColor = "#FF4500";
-  // Valida 2o digito 
+  // Valida 2o digito
   add = 0;
   for (i = 0; i < 10; i++)
     add += parseInt(vcpf.charAt(i)) * (11 - i);
@@ -75,27 +75,36 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
   return elemento.style.backgroundColor = "#1E90FF";
   }
 </script>
-<body>
 <h2>Cadastro de Médicos</h2>
-
+<hr>
+<!-- Inicio primeira Linha-->
 <form class="form-fluid" method="POST">
     <div class="row">
-            <div class="col-md-3 col-xs-2">
+            <div class="col-md-6 col-xs-2">
                 <div class="form-group">
                     <label for="">Nome:</label>
                     <input type="text" class="form-control" name="nome" placeholder="Nome" required="">
                 </div>
             </div>
-        <div class="col-md-3 col-xs-3">
-            <div class="form-group">
-                <label for="">UF:</label>
-                    <select class="form-control" width="100%" required="" name="uf">
-                        <option value="1">AC</option>
-                        <option value="2">PR</option>
-                        <option value="3">SP</option>
-                    </select>
+
+            <div class="col-md-3 col-xs-3">
+                <div class="form-group">
+                    <label for="">CPF:</label>
+                    <input  id="vcpf" type="text" class="form-control" name="cpf" placeholder="CPF" size="12" maxlength="11"  onblur="TestaCPF(this)" >
+                </div>
             </div>
-        </div>
+
+            <div class="col-md- col-xs-3">
+                <div class="form-group">
+                    <label for="">RG:</label>
+                    <input type="text" class="form-control" name="rg" placeholder="RG">
+                </div>
+            </div>
+          </div>
+<!-- Fim primeira Linha-->
+
+<!-- Inicio segunda linha-->
+<div class="row">
         <div class="col-md-3 col-xs-2">
             <div class="form-group">
                 <label for="">Area de Atuação:</label>
@@ -104,15 +113,75 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
                     </select>
             </div>
         </div>
-            <div class="col-md-3 col-xs-3">
-                <div class="form-group">
-                    <label for="">CRM:</label>
-                    <input type="text" class="form-control" name="crm" placeholder="CRM" required="">
-                </div>
-            </div>
-    </div><!-- Primeira ROW-->
 
-    <div class="row">
+        <div class="col-md-3 col-xs-3">
+              <div class="form-group">
+                  <label for="">CRM:</label>
+                  <input type="text" class="form-control" name="crm" placeholder="CRM" required="">
+              </div>
+        </div>
+
+        <div class="col-md-2 col-xs-3">
+              <div class="form-group">
+                  <label for="">Telefone:</label>
+                  <input type="text" class="form-control" name="tel" placeholder="Telefone" required="">
+                </div>
+        </div>
+
+        <div class="col-md-4 col-xs-2">
+              <div class="form-group">
+                  <label for="">Email:</label>
+                  <input type="email" class="form-control" name="email" placeholder="Email" required="">
+              </div>
+        </div>
+    </div>
+<!-- Fim segunda linha-->
+
+<!-- Inicio terceira linha-->
+<div class="row">
+
+      <div class="col-md-2 col-xs-3">
+          <div class="form-group">
+                  <label for="">CEP:</label>
+                  <input type="text" class="form-control" name="cep" placeholder="CEP" required="">
+          </div>
+      </div>
+
+      <div class="col-md-5 col-xs-3">
+          <div class="form-group">
+              <label for="">Logradouro:</label>
+              <input type="text" class="form-control" name="rua" placeholder="Rua" required="">
+          </div>
+      </div>
+
+      <div class="col-md-2 col-xs-3">
+         <div class="form-group">
+             <label for="">Numero:</label>
+             <input type="text" class="form-control" name="numero" placeholder="Numero" required="">
+         </div>
+     </div>
+
+     <div class="col-md-3 col-xs-3">
+        <div class="form-group">
+            <label for="">Bairro:</label>
+            <input type="text" class="form-control" name="bairro" placeholder="Bairro" required="">
+        </div>
+    </div>
+</div>
+<!-- Fim terceira linha-->
+
+<!-- Inicio quarta linha-->
+<div class="row">
+  <div class="col-md-2 col-xs-3">
+      <div class="form-group">
+          <label for="">Estado:</label>
+              <select class="form-control" width="100%" required="" name="uf">
+                  <option value="1">AC</option>
+                  <option value="2">PR</option>
+                  <option value="3">SP</option>
+              </select>
+      </div>
+  </div>
         <div class="col-md-3 col-xs-2">
             <div class="form-group">
                 <label for="">Cidade:</label>
@@ -120,69 +189,21 @@ if (isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['crm']) && iss
             </div>
         </div>
 
-        <div class="col-md-3 col-xs-3">
+        <div class="col-md-7 col-xs-2">
             <div class="form-group">
-                <label for="">CPF:</label>
-                <input  id="vcpf" type="text" class="form-control" name="cpf" placeholder="CPF" size="12" maxlength="11"  onblur="TestaCPF(this)" >   
+                <label for="">Complemento:</label>
+                <input type="text" class="form-control" name="complemento" placeholder="Complemento" required="">
             </div>
         </div>
+</div>
+<!-- Fim quarta linha-->
 
-
-        <div class="col-md- col-xs-3">
-            <div class="form-group">
-                <label for="">RG:</label>
-                <input type="text" class="form-control" name="rg" placeholder="RG">
-            </div>
-        </div>
-
-
-        <div class="col-md-3 col-xs-2">
-            <div class="form-group">
-                <label for="">Email:</label>
-                <input type="email" class="form-control" name="email" placeholder="Email" required="">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-xs-3">
-            <div class="form-group">
-                <label for="">Rua:</label>
-                <input type="text" class="form-control" name="rua" placeholder="Rua" required="">
-            </div>
-        </div>
-
-        <div class="col-md-3 col-xs-3">
-            <div class="form-group">
-                    <label for="">Telefone:</label>
-                    <input type="text" class="form-control" name="tel" placeholder="Telefone" required="">
-            </div>
-        </div>
-        <div class="col-md-3 col-xs-3">
-            <div class="form-group">
-                    <label for="">CEP:</label>
-                    <input type="text" class="form-control" name="cep" placeholder="CEP" required="">
-            </div>
-        </div>
-        <div class="col-md-2 col-xs-2">
-            <div class="form-group">
-                <label for="">UF:</label>
-                <input type="text" class="form-control" name="uf" placeholder="UF" required="">
-            </div>
-        </div>
-             <div class="col-md-2 col-xs-3">
-                <div class="form-group">
-                    <label for="">Numero:</label>
-                    <input type="text" class="form-control" name="numero" placeholder="Numero" required="">
-                </div>
-            </div>
-        </div>
-    
-    
-        <div class="row form-group">
-            <div class="col-md-3">
+<!-- Linha dos botoes-->
+<div class="row form-group">
+          <div class="col-md-3">
                 <input type="submit" class="btn btn-info" value="Salvar">
                 <input type="reset" class="btn btn-warning" value="Limpar">
-            </div>
-        </div>
-    </form>
-</body>
+          </div>
+</div>
+<!-- Fim da linha dos botoes-->
+</form>
